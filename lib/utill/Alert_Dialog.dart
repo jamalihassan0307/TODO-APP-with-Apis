@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/utill/color.dart';
+import 'package:http/http.dart' as http;
+import 'package:uuid/uuid.dart';
 
 class Dilogbox extends StatelessWidget {
   const Dilogbox({super.key});
@@ -141,24 +145,54 @@ class Dilogbox extends StatelessWidget {
               },
               keyboardType: TextInputType.emailAddress,
             ),
-            Container(
-              height: height * 0.04,
-              width: width * 0.2,
-              decoration: BoxDecoration(
-                  color: AppTheme.primarycolor,
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 2,
-                    style: BorderStyle.solid,
-                  )),
-              child: Center(
-                  child: Text(
-                "sf",
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              )),
+            InkWell(
+              onTap: () async {
+                var uuid = Uuid().v4();
+                var url = Uri.parse("https://api.nstack.in/v1/todos");
+
+                Map<String, String> headers = {
+                  "Content-Type": "application/json",
+                };
+
+                Map<String, dynamic> body = {
+                  "_id": uuid,
+                  "title": titlecontroller.text.toString(),
+                  "description": discriptioncontroller.text.toString(),
+                };
+
+                var response = await http.post(
+                  url,
+                  headers: headers,
+                  body: jsonEncode(body), // Encode the body as JSON
+                );
+
+                if (response.statusCode == 200) {
+                  print("Data posted successfully!");
+                } else {
+                  print("Error posting data - ${response.statusCode}");
+                  print("Response body: ${response.body}");
+                }
+                Navigator.pop(context);
+              },
+              child: Container(
+                height: height * 0.04,
+                width: width * 0.2,
+                decoration: BoxDecoration(
+                    color: AppTheme.primarycolor,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 2,
+                      style: BorderStyle.solid,
+                    )),
+                child: Center(
+                    child: Text(
+                  "ADD",
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                )),
+              ),
             )
           ],
         ),
