@@ -38,6 +38,7 @@ dependencies:
   flutter_slidable: 
   get:
   uuid: 
+  shimmer: 
   http: 
 
 dev_dependencies:

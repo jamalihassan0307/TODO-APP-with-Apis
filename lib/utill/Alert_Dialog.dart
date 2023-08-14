@@ -42,28 +42,24 @@ class Dilogbox extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
                 enabledBorder: OutlineInputBorder(
-                  // borderRadius: BorderRadius.circular(50),
                   borderSide: const BorderSide(
                     color: Colors.black54,
                     width: 2,
                   ),
                 ),
                 errorBorder: OutlineInputBorder(
-                  // borderRadius: BorderRadius.all(Radius.circular(50)),
                   borderSide: BorderSide(
                     width: 2,
                     color: Colors.red,
                   ),
                 ),
                 focusedErrorBorder: OutlineInputBorder(
-                  // borderRadius: BorderRadius.circular(50),
                   borderSide: const BorderSide(
                     color: Colors.red,
                     width: 2,
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  // borderRadius: BorderRadius.circular(50),
                   borderSide: const BorderSide(
                     color: Colors.black,
                     width: 2,
@@ -107,19 +103,14 @@ class Dilogbox extends StatelessWidget {
                   fontSize: width * 0.035,
                   fontWeight: FontWeight.w500,
                 ),
-                enabledBorder: OutlineInputBorder(
-                    // borderRadius: BorderRadius.circular(50),
-
-                    ),
+                enabledBorder: OutlineInputBorder(),
                 errorBorder: OutlineInputBorder(
-                  // borderRadius: BorderRadius.all(Radius.circular(50)),
                   borderSide: BorderSide(
                     width: 2,
                     color: Colors.red,
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  // borderRadius: BorderRadius.circular(50),
                   borderSide: const BorderSide(
                     color: Colors.black,
                     width: 2,
